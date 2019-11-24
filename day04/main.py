@@ -5,8 +5,6 @@ with open("input.txt") as f:
     lines = list(filter(None, f.read().split("\n")))
 
 lines = sorted(lines)
-print(lines)
-
 data = {}
 guard_id = None
 
@@ -36,3 +34,15 @@ for line in lines:
         minute_start = find_minute(line)
 
 print(most_common, data[most_common].most_common(1))
+
+most_common = None
+max_value = 0
+minute_val = None
+for guard_id in data.keys():
+    minute, count = data[guard_id].most_common(1)[0]
+    if count > max_value:
+        max_value = count
+        most_common = guard_id
+        minute_val = minute
+
+print(most_common, minute_val)
