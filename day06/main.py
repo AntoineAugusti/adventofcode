@@ -36,3 +36,10 @@ for point in infinite:
     counts.pop(point)
 
 print(max(counts.values()))
+
+count = 0
+for y in range(minY, maxY + 1):
+    for x in range(minX, maxX + 1):
+        if sum(manhattan(x, y, px, py) for px, py in points) < 10000:
+            count += 1
+print(count)
